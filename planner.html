@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Planora — Smart Event Management Platform</title>
+
+    <!-- TailWind Css Link-->
+    <link rel="stylesheet" href="./dist/output.css">
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-[#07070c] text-white">
+
+    <!-- Background Glow -->
+
+    <div
+        class="pointer-events-none fixed -left-24 -top-24 h-72 w-72 rounded-full bg-purple-600/20 blur-3xl">
+    </div>
+
+    <div
+        class="pointer-events-none fixed -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-600/20 blur-3xl">
+    </div>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="relative z-50 border-b border-white/10 bg-black/30 backdrop-blur-xl">
+
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+
+            <!-- Logo -->
+
+            <a href="./home.html"
+                class="text-2xl font-black tracking-tight bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+
+                Planora<span class="text-white">.</span>
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <div class="hidden items-center gap-8 md:flex">
+
+                <a href="home.html" class="text-sm text-white">
+                    Home
+                </a>
+
+                <a href="./planner.html"
+                    class="text-sm font-semibold text-white">
+                    Plane
+
+                </a>
+
+            </div>
+
+
+            <!-- User -->
+
+            <div
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-purple-500 to-blue-500 text-sm font-bold">
+
+                S
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="relative mx-auto max-w-7xl px-6 py-10 lg:px-10">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <section class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+
+            <div>
+
+                <p class="text-sm font-bold uppercase tracking-widest text-purple-400">
+                    Smart Dashboard
+                </p>
+
+                <h1 class="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
+                    Your Event Planner
+                </h1>
+
+                <p class="mt-2 max-w-xl text-sm text-gray-500">
+                    Plan, organize and manage all your events from one place.
+                </p>
+
+            </div>
+
+
+            <!-- Create Event -->
+
+            <button
+                id="openModal"
+                class="group flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-purple-500 to-blue-500 px-6 py-3.5 text-sm font-bold shadow-lg shadow-purple-500/20 transition duration-300 hover:-translate-y-1 hover:shadow-purple-500/40">
+
+                <span class="text-xl transition duration-300 group-hover:rotate-90">
+                    +
+                </span>
+
+                Create Event
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+
+            <!-- Events -->
+
+            <div
+                class="rounded-2xl border border-white/10 bg-white/4 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1">
+
+                <div class="flex items-center justify-between">
+
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-500/10 text-xl">
+                        📅
+                    </div>
+
+                    <span class="text-xs text-gray-600">
+                        TOTAL
+                    </span>
+
+                </div>
+
+                <p id="totalEvents" class="mt-5 text-3xl font-black">
+                    0
+                </p>
+
+                <p class="mt-1 text-sm text-gray-500">
+                    Events
+                </p>
+
+            </div>
+
+
+            <!-- Guests -->
+
+            <div
+                class="rounded-2xl border border-white/10 bg-white/4 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1">
+
+                <div class="flex items-center justify-between">
+
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-xl">
+                        👥
+                    </div>
+
+                    <span class="text-xs text-gray-600">
+                        PEOPLE
+                    </span>
+
+                </div>
+
+                <p id="totalGuests" class="mt-5 text-3xl font-black">
+                    0
+                </p>
+
+                <p class="mt-1 text-sm text-gray-500">
+                    Total Guests
+                </p>
+
+            </div>
+
+
+            <!-- Budget -->
+
+            <div
+                class="rounded-2xl border border-white/10 bg-white/4 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1">
+
+                <div class="flex items-center justify-between">
+
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-xl bg-green-500/10 text-xl">
+                        ₹
+                    </div>
+
+                    <span class="text-xs text-gray-600">
+                        MONEY
+                    </span>
+
+                </div>
+
+                <p id="totalBudget" class="mt-5 text-3xl font-black">
+                    ₹0
+                </p>
+
+                <p class="mt-1 text-sm text-gray-500">
+                    Planned Budget
+                </p>
+
+            </div>
+
+
+            <!-- Tasks -->
+
+            <div
+                class="rounded-2xl border border-white/10 bg-white/4 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1">
+
+                <div class="flex items-center justify-between">
+
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-xl bg-pink-500/10 text-xl">
+                        ✓
+                    </div>
+
+                    <span class="text-xs text-gray-600">
+                        PROGRESS
+                    </span>
+
+                </div>
+
+                <p id="totalTasks" class="mt-5 text-3xl font-black">
+                    0
+                </p>
+
+                <p class="mt-1 text-sm text-gray-500">
+                    Completed Tasks
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="mt-10">
+
+            <div class="flex flex-col gap-4 sm:flex-row">
+
+
+                <!-- Search -->
+
+                <div class="relative flex-1">
+
+                    <span
+                        class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                        🔍
+                    </span>
+
+                    <input
+                        id="searchEvent"
+                        type="text"
+                        placeholder="Search events..."
+                        class="w-full rounded-xl border border-white/10 bg-white/4 py-3.5 pl-11 pr-4 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/50">
+
+                </div>
+
+
+                <!-- Category -->
+
+                <select
+                    id="categoryFilter"
+                    class="rounded-xl border border-white/10 bg-[#111119] px-5 py-3.5 text-sm text-gray-300 outline-none focus:border-purple-500/50">
+
+                    <option value="all">
+                        All Events
+                    </option>
+
+                    <option value="birthday">
+                        Birthday
+                    </option>
+
+                    <option value="wedding">
+                        Wedding
+                    </option>
+
+                    <option value="party">
+                        Party
+                    </option>
+
+                    <option value="meeting">
+                        Meeting
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EVENTS ================= -->
+
+        <section class="mt-10">
+
+            <div class="mb-5">
+
+                <h2 class="text-xl font-bold">
+                    My Events
+                </h2>
+
+                <p class="mt-1 text-xs text-gray-600">
+                    Your created events will appear here.
+                </p>
+
+            </div>
+
+
+            <!-- Event Container -->
+
+            <div
+                id="eventsContainer"
+                class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="emptyState"
+                    class="col-span-full rounded-3xl border border-dashed border-white/10 bg-white/2 p-12 text-center">
+
+                    <div
+                        class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-500/10 text-3xl">
+                        📅
+                    </div>
+
+                    <h3 class="mt-5 text-lg font-bold">
+                        No events yet
+                    </h3>
+
+                    <p class="mx-auto mt-2 max-w-sm text-sm text-gray-500">
+                        Create your first event and start planning everything
+                        from one place.
+                    </p>
+
+                    <button
+                        id="emptyCreateBtn"
+                        class="mt-6 rounded-xl bg-white px-5 py-3 text-sm font-bold text-black transition duration-300 hover:scale-105">
+
+                        Create Your First Event
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= CREATE EVENT MODAL ================= -->
+
+    <div
+        id="eventModal"
+        class="fixed inset-0 z-100 hidden items-center justify-center bg-black/70 px-5 backdrop-blur-md">
+
+
+        <div
+            class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-white/10 bg-[#111119] p-6 shadow-2xl">
+
+
+            <!-- Modal Header -->
+
+            <div class="flex items-center justify-between">
+
+                <div>
+
+                    <p class="text-xs font-bold uppercase tracking-widest text-purple-400">
+                        New Event
+                    </p>
+
+                    <h2 class="mt-1 text-2xl font-black">
+                        Create an Event
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="closeModal"
+                    class="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gray-400 transition hover:bg-white/10 hover:text-white">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="eventForm" class="mt-7 space-y-5">
+
+
+                <!-- Name -->
+
+                <div>
+
+                    <label class="mb-2 block text-sm font-medium text-gray-300">
+                        Event Name
+                    </label>
+
+                    <input
+                        id="eventName"
+                        type="text"
+                        placeholder="Birthday Celebration"
+                        required
+                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/60">
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div>
+
+                    <label class="mb-2 block text-sm font-medium text-gray-300">
+                        Category
+                    </label>
+
+                    <select
+                        id="eventCategory"
+                        required
+                        class="w-full rounded-xl border border-white/10 bg-[#181820] px-4 py-3 text-sm text-gray-300 outline-none focus:border-purple-500/60">
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="birthday">
+                            🎂 Birthday
+                        </option>
+
+                        <option value="wedding">
+                            💍 Wedding
+                        </option>
+
+                        <option value="party">
+                            🎉 Party
+                        </option>
+
+                        <option value="meeting">
+                            💼 Meeting
+                        </option>
+
+                        <option value="other">
+                            ✨ Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Date / Time -->
+
+                <div class="grid gap-4 sm:grid-cols-2">
+
+                    <div>
+
+                        <label class="mb-2 block text-sm font-medium text-gray-300">
+                            Date
+                        </label>
+
+                        <input
+                            id="eventDate"
+                            type="date"
+                            required
+                            class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-300 outline-none focus:border-purple-500/60">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="mb-2 block text-sm font-medium text-gray-300">
+                            Time
+                        </label>
+
+                        <input
+                            id="eventTime"
+                            type="time"
+                            required
+                            class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-300 outline-none focus:border-purple-500/60">
+
+                    </div>
+
+                </div>
+
+
+                <!-- Venue -->
+
+                <div>
+
+                    <label class="mb-2 block text-sm font-medium text-gray-300">
+                        Venue
+                    </label>
+
+                    <input
+                        id="eventVenue"
+                        type="text"
+                        placeholder="Grand Celebration Hall"
+                        required
+                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/60">
+
+                </div>
+
+
+                <!-- Guests / Budget -->
+
+                <div class="grid gap-4 sm:grid-cols-2">
+
+                    <div>
+
+                        <label class="mb-2 block text-sm font-medium text-gray-300">
+                            Guests
+                        </label>
+
+                        <input
+                            id="eventGuests"
+                            type="number"
+                            min="1"
+                            placeholder="50"
+                            required
+                            class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/60">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="mb-2 block text-sm font-medium text-gray-300">
+                            Budget
+                        </label>
+
+                        <input
+                            id="eventBudget"
+                            type="number"
+                            min="0"
+                            placeholder="25000"
+                            required
+                            class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/60">
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div>
+
+                    <label class="mb-2 block text-sm font-medium text-gray-300">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="eventDescription"
+                        rows="3"
+                        placeholder="Tell something about your event..."
+                        class="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-purple-500/60"></textarea>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="w-full rounded-xl bg-linear-to-r from-purple-500 to-blue-500 py-3.5 text-sm font-bold shadow-lg shadow-purple-500/20 transition duration-300 hover:-translate-y-0.5">
+
+                    Create Event →
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10">
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-center text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+
+            <p>
+                © 2026 <span class="text-white font-semibold">Planora</span>. Smart Event Platform.
+            </p>
+
+            <p>
+                Plan • Organize • Celebrate 🎉
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
